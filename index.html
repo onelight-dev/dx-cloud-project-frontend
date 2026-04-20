@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SPOFFY - 패션 코디 세트 쇼핑몰</title>
+  <link rel="stylesheet" href="css/common.css"/>
+  <link rel="stylesheet" href="css/index.css"/>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header class="top-line">
+    <div class="wrap topbar">
+      <a href="index.html" class="brand" aria-label="SPOFFY 홈">
+        <span class="brand-text">Spoffy</span>
+      </a>
+      <div class="header-actions">
+        <button class="icon-action" aria-label="검색" onclick="window.location.href='product-list.html'">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+        </button>
+        <a href="mypage.html" class="icon-action" aria-label="마이페이지">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M2 21c0-5.523 4.477-10 10-10s10 4.477 10 10"/></svg>
+        </a>
+        <a href="cart.html" class="icon-action" aria-label="장바구니" style="position:relative;">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge hidden">0</span>
+        </a>
+        <button id="header-login-btn" class="header-text-btn" onclick="window.location.href='login.html'">로그인</button>
+        <button id="header-logout-btn" class="header-text-btn hidden">로그아웃</button>
+      </div>
+    </div>
+    <nav class="category-row" aria-label="카테고리">
+      <div class="wrap">
+        <ul class="categories">
+          <li><a href="product-list.html?cat=set">코디 세트</a></li>
+          <li><a href="product-list.html?cat=outer">아우터</a></li>
+          <li><a href="product-list.html?cat=top">상의</a></li>
+          <li><a href="product-list.html?cat=bottom">하의</a></li>
+          <li><a href="product-list.html?cat=shoes">신발</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ── MAIN ── -->
+  <main>
+
+    <!-- B-1. 메인 배너 (카드 그리드) -->
+    <section class="hero-section" aria-label="메인 배너">
+      <div class="wrap">
+        <div class="hero-grid">
+
+          <a href="product-detail.html?id=1" class="hero-card">
+            <img src="image/모노톤 셋업 코디 세트.png" alt="모노톤 셋업 코디"/>
+            <div class="hero-overlay">
+              <strong>모노톤 셋업 코디</strong>
+              <span>자켓부터 슈즈까지 한 번에 스타일 완성</span>
+            </div>
+          </a>
+
+          <a href="product-detail.html?id=2" class="hero-card">
+            <img src="image/소프트 데일리 코디.png" alt="소프트 데일리 코디"/>
+            <div class="hero-overlay">
+              <strong>소프트 데일리 코디</strong>
+              <span>부드럽고 편안한 데일리 스타일</span>
+            </div>
+          </a>
+
+          <a href="product-detail.html?id=3" class="hero-card">
+            <img src="image/스트리트 패션.png" alt="스트리트 패션"/>
+            <div class="hero-overlay">
+              <strong>캐주얼 스트리트 코디</strong>
+              <span>가볍게 입기 좋은 스트릿 스타일</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- B-2. 이벤트 배너 -->
+    <section class="section event-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>이벤트</h2>
+            <p>지금 진행 중인 특별 혜택</p>
+          </div>
+          <a href="product-list.html?cat=event" class="section-link">전체 보기</a>
+        </div>
+        <div class="event-grid">
+          <article class="event-card event-card-primary">
+            <div class="event-tag">LIMITED</div>
+            <strong class="event-title">신규 회원<br>첫 구매 20% 할인</strong>
+            <span class="event-sub">가입 후 7일 이내 적용</span>
+            <a href="signup.html" class="btn primary sm event-cta">지금 가입</a>
+          </article>
+          <article class="event-card">
+            <div class="event-tag">SALE</div>
+            <strong class="event-title">여름 시즌<br>코디 세트 특가</strong>
+            <span class="event-sub">최대 35% 할인</span>
+            <a href="product-list.html?cat=set" class="btn sm event-cta">쇼핑하기</a>
+          </article>
+          <article class="event-card">
+            <div class="event-tag">AI FITTING</div>
+            <strong class="event-title">AI 피팅<br>무료 체험</strong>
+            <span class="event-sub">지금 바로 시작하세요</span>
+            <a href="ai-fitting.html" class="btn sm event-cta">체험하기</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Products -->
+    <section class="section" id="best-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Best 코디</h2>
+            <p>지금 가장 인기 있는 코디 세트</p>
+          </div>
+          <a href="product-list.html" class="section-link">전체 보기</a>
+        </div>
+        <div class="product-grid" id="best-products">
+          <!-- JS로 렌더링 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- B-3. 공지 / 고객센터 -->
+    <section class="section notice-section">
+      <div class="wrap">
+        <div class="notice-grid">
+          <div class="notice-card panel">
+            <h3 class="notice-title">공지사항</h3>
+            <ul class="notice-list">
+              <li><a href="#">[공지] 2025 여름 시즌 신상 입고 안내</a><span>2025.07.01</span></li>
+              <li><a href="#">[안내] 배송비 정책 변경 안내</a><span>2025.06.20</span></li>
+              <li><a href="#">[이벤트] AI 피팅 기능 오픈 이벤트</a><span>2025.06.10</span></li>
+            </ul>
+          </div>
+          <div class="notice-card panel">
+            <h3 class="notice-title">고객센터</h3>
+            <div class="cs-info">
+              <p class="cs-number">070-0000-0000</p>
+              <p class="cs-hours">평일 10:00 – 18:00 (주말·공휴일 휴무)</p>
+              <div style="display:flex;gap:10px;margin-top:16px;">
+                <a href="#" class="btn sm">카카오 문의</a>
+                <a href="#" class="btn sm">1:1 이메일</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand-text">Spoffy</div>
+          <p class="footer-desc">패션 코디 세트 쇼핑몰<br>AI 피팅으로 나만의 스타일을 찾아보세요.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="product-list.html">상품 목록</a>
+          <a href="ai-fitting.html">AI 피팅</a>
+          <a href="mypage.html">마이페이지</a>
+          <a href="wishlist.html">위시리스트</a>
+        </div>
+        <div class="footer-col">
+          <h4>고객센터</h4>
+          <a href="#">이용약관</a>
+          <a href="#">개인정보처리방침</a>
+          <a href="#">1:1 문의</a>
+          <p style="margin-top:8px;font-size:12px;color:rgba(255,255,255,0.35)">평일 10:00 – 18:00<br>070-0000-0000</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 SPOFFY Inc. All rights reserved.</p>
+        <div class="footer-sns">
+          <a href="#">Instagram</a>
+          <a href="#">Kakao</a>
+          <a href="#">Blog</a>
+        </div>
+      </div>
+      <p class="footer-info">SPOFFY Inc. | 대표: 홍길동 | 사업자등록번호: 000-00-00000</p>
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+
+  <script src="js/common.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

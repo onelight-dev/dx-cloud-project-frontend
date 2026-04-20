@@ -1,0 +1,158 @@
+/* ========================================
+   SPOFFY - 마이페이지 (mypage.css)
+   ======================================== */
+
+.mypage-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ── Sidebar ── */
+.mypage-sidebar { display: grid; gap: 14px; position: sticky; top: calc(var(--header-h) + 24px); }
+
+.user-card { padding: 28px 20px; text-align: center; }
+.user-avatar { font-size: 48px; margin-bottom: 10px; }
+.user-name { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+.user-email { font-size: 13px; color: var(--muted); margin-bottom: 18px; }
+
+.user-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+.user-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  border-right: 1px solid var(--line);
+}
+.user-stat:last-child { border-right: none; }
+.stat-val { font-size: 22px; font-weight: 800; letter-spacing: -0.03em; }
+.stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700; }
+
+.mypage-nav { overflow: hidden; }
+.mypage-nav-item {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  text-align: left;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  text-decoration: none;
+}
+.mypage-nav-item:last-child { border-bottom: none; }
+.mypage-nav-item:hover { background: var(--soft); color: var(--text); }
+.mypage-nav-item.active { background: var(--soft); color: var(--text); font-weight: 800; }
+
+/* ── Content ── */
+.mypage-content {}
+.mypage-section {}
+.mypage-section-title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 18px;
+}
+
+/* Order list */
+#orders-list { display: grid; gap: 14px; }
+.order-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+}
+.order-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--soft);
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+.order-card-no { font-weight: 800; }
+.order-card-date { color: var(--muted); }
+.order-card-status {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--text);
+  color: #fff;
+}
+.order-card-status.delivered { background: #2e8b57; }
+.order-card-status.shipping { background: #4a6fa5; }
+.order-card-status.cancelled { background: #aaa; }
+
+.order-card-items { padding: 14px 18px; display: grid; gap: 12px; }
+.order-item-row {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+.order-item-thumb {
+  width: 60px;
+  aspect-ratio: 3/4;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #f2f2ef, #e2e2df);
+  overflow: hidden;
+}
+.order-item-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.order-item-name { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.order-item-opt { font-size: 12px; color: var(--muted); }
+.order-item-price { font-size: 14px; font-weight: 800; white-space: nowrap; }
+
+.order-card-footer {
+  padding: 12px 18px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.order-total { font-size: 15px; font-weight: 800; }
+.order-card-actions { display: flex; gap: 8px; }
+
+/* Address card */
+.address-list { display: grid; gap: 12px; }
+.address-card { padding: 20px; }
+.addr-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.addr-card-head strong { font-size: 15px; }
+.addr-default-badge {
+  font-size: 11px;
+  font-weight: 800;
+  background: var(--text);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+.addr-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.addr-detail { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.addr-actions { display: flex; gap: 8px; margin-top: 12px; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .mypage-layout { grid-template-columns: 1fr; }
+  .mypage-sidebar { position: static; }
+}

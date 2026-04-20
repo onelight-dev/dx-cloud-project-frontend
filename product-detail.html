@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>상품 상세 - SPOFFY</title>
+  <link rel="stylesheet" href="css/common.css"/>
+  <link rel="stylesheet" href="css/product-detail.css"/>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header class="top-line">
+    <div class="wrap topbar">
+      <a href="index.html" class="brand"><span class="brand-text">Spoffy</span></a>
+      <div class="header-actions">
+        <button class="icon-action" aria-label="검색" onclick="window.location.href='product-list.html'">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+        </button>
+        <a href="mypage.html" class="icon-action" aria-label="마이페이지">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M2 21c0-5.523 4.477-10 10-10s10 4.477 10 10"/></svg>
+        </a>
+        <a href="cart.html" class="icon-action" aria-label="장바구니" style="position:relative;">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge hidden">0</span>
+        </a>
+        <button id="header-login-btn" class="header-text-btn" onclick="window.location.href='login.html'">로그인</button>
+        <button id="header-logout-btn" class="header-text-btn hidden">로그아웃</button>
+      </div>
+    </div>
+    <nav class="category-row" aria-label="카테고리">
+      <div class="wrap">
+        <ul class="categories">
+          <li><a href="product-list.html?cat=set">코디 세트</a></li>
+          <li><a href="product-list.html?cat=outer">아우터</a></li>
+          <li><a href="product-list.html?cat=top">상의</a></li>
+          <li><a href="product-list.html?cat=bottom">하의</a></li>
+          <li><a href="product-list.html?cat=shoes">신발</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap page">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="경로">
+        <a href="index.html">홈</a>
+        <span>›</span>
+        <a href="product-list.html">상품 목록</a>
+        <span>›</span>
+        <span id="breadcrumb-name">상품명</span>
+      </nav>
+
+      <!-- D. 상품 상세 -->
+      <div class="detail-grid">
+
+        <!-- D-1. 이미지/썸네일 영역 -->
+        <div class="gallery panel">
+          <div class="main-shot" id="main-shot"></div>
+          <div class="thumb-row" id="thumb-row"></div>
+        </div>
+
+        <!-- D-2 ~ D-5. 정보 및 액션 영역 -->
+        <div class="detail-info panel">
+          <div class="detail-inner">
+
+            <!-- D-2. 상품명 -->
+            <p class="eyebrow" id="detail-brand">SPOFFY</p>
+            <h1 class="detail-title" id="detail-name">상품명 로딩 중...</h1>
+            <p class="detail-desc muted" id="detail-desc"></p>
+
+            <!-- D-3. 가격 -->
+            <div class="price-area">
+              <span class="sale-rate" id="detail-discount"></span>
+              <span class="sale-price" id="detail-price"></span>
+              <span class="origin-price" id="detail-original"></span>
+            </div>
+
+            <!-- Tags -->
+            <div class="tag-list" id="detail-tags"></div>
+
+            <p class="shipping-note">* 5만원 이상 구매 시 무료 배송 | 평균 2~3일 내 출고</p>
+
+            <!-- D-4. 구성 상품별 옵션 선택 (JS 렌더링) -->
+            <div class="item-options-list" id="item-options-list"></div>
+
+            <!-- D-5. 액션 버튼 -->
+            <div class="action-btns">
+              <button class="btn wide primary lg" id="buy-btn">바로 구매</button>
+              <div class="action-btns-row2">
+                <button class="btn wide lg" id="cart-btn">장바구니</button>
+                <button class="btn wide accent lg" id="ai-btn">AI 피팅</button>
+                <button class="wish-action-btn" id="wish-btn" aria-label="찜하기">♡</button>
+              </div>
+            </div>
+
+            <!-- D-9. 배송/교환/환불 -->
+            <div class="status-box" style="margin-top:16px;font-size:13px;">
+              배송: 2~3 영업일 내 출고 · 반품/교환: 수령 후 7일 이내 · 단순 변심 교환 가능
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand-text">Spoffy</div>
+          <p class="footer-desc">패션 코디 세트 쇼핑몰</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="product-list.html">상품 목록</a>
+          <a href="ai-fitting.html">AI 피팅</a>
+        </div>
+        <div class="footer-col">
+          <h4>고객센터</h4>
+          <a href="#">이용약관</a>
+          <a href="#">개인정보처리방침</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 SPOFFY Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+
+  <script src="js/common.js"></script>
+  <script src="js/product-detail.js"></script>
+</body>
+</html>

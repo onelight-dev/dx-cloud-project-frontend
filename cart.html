@@ -9,34 +9,7 @@
 </head>
 <body>
 
-  <header class="top-line">
-    <div class="wrap topbar">
-      <a href="index.html" class="brand"><span class="brand-text">Spoffy</span></a>
-      <div class="header-actions">
-        <button class="icon-action" aria-label="검색" onclick="window.location.href='product-list.html'">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
-        </button>
-        <a href="mypage.html" class="icon-action" aria-label="마이페이지">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M2 21c0-5.523 4.477-10 10-10s10 4.477 10 10"/></svg>
-        </a>
-        <a href="cart.html" class="icon-action" aria-label="장바구니" style="position:relative;">
-          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-          <span class="cart-badge hidden">0</span>
-        </a>
-        <button id="header-login-btn" class="header-text-btn" onclick="window.location.href='login.html'">로그인</button>
-        <button id="header-logout-btn" class="header-text-btn hidden">로그아웃</button>
-      </div>
-    </div>
-    <nav class="category-row"><div class="wrap">
-      <ul class="categories">
-        <li><a href="product-list.html?cat=set">코디 세트</a></li>
-        <li><a href="product-list.html?cat=outer">아우터</a></li>
-        <li><a href="product-list.html?cat=top">상의</a></li>
-        <li><a href="product-list.html?cat=bottom">하의</a></li>
-        <li><a href="product-list.html?cat=shoes">신발</a></li>
-      </ul>
-    </div></nav>
-  </header>
+  <div id="header"></div>
 
   <main>
     <div class="wrap page">
@@ -108,18 +81,8 @@
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      <div class="footer-inner">
-        <div><div class="footer-brand-text">Spoffy</div></div>
-        <div class="footer-col"><h4>Services</h4><a href="product-list.html">상품 목록</a></div>
-        <div class="footer-col"><h4>고객센터</h4><a href="#">이용약관</a></div>
-      </div>
-      <div class="footer-bottom"><p class="footer-copyright">© 2025 SPOFFY Inc.</p></div>
-    </div>
-  </footer>
+  <div id="footer"></div>
 
-  <div id="toast-container"></div>
   <script src="js/common.js"></script>
   <script src="js/cart.js"></script>
 </body>

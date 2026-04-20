@@ -1,0 +1,43 @@
+/* ========================================
+   SPOFFY - 위시리스트 페이지 (wishlist.css)
+   ======================================== */
+
+.wish-page-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.page-title { font-size: 30px; font-weight: 800; letter-spacing: -0.04em; }
+.wish-count { font-size: 14px; color: var(--muted); }
+
+/* 상품 그리드는 common.css의 .product-grid 재사용 */
+/* 위시리스트에서는 삭제 버튼이 강조됨 */
+#wish-grid .wish-btn {
+  background: rgba(183, 75, 59, 0.1);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+#wish-grid .wish-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* 장바구니 담기 버튼 (hover 시 표시) */
+.product-card .quick-cart {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(17, 17, 17, 0.85);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+  backdrop-filter: blur(4px);
+}
+.product-card:hover .quick-cart { opacity: 1; }

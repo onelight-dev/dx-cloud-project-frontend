@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>회원가입 - SPOFFY</title>
+  <link rel="stylesheet" href="css/common.css"/>
+  <link rel="stylesheet" href="css/signup.css"/>
+</head>
+<body>
+
+  <header class="top-line">
+    <div class="wrap topbar">
+      <a href="index.html" class="brand"><span class="brand-text">Spoffy</span></a>
+    </div>
+  </header>
+
+  <main class="auth-main">
+    <div class="signup-wrap">
+      <div class="auth-card panel">
+
+        <p class="auth-eyebrow">SPOFFY</p>
+        <h1 class="auth-title">회원가입</h1>
+        <p class="auth-sub">SPOFFY와 함께 나만의 스타일을 찾아보세요.</p>
+
+        <form id="signup-form" novalidate>
+
+          <!-- F-1. 아이디 / F-2. 중복확인 -->
+          <div class="form-group">
+            <label class="form-label" for="su-id">아이디 (이메일)</label>
+            <div class="id-row">
+              <input type="email" id="su-id" class="input" placeholder="example@email.com" autocomplete="email"/>
+              <button type="button" class="btn sm" id="check-id-btn">중복 확인</button>
+            </div>
+            <p class="input-error-msg hidden" id="su-id-msg"></p>
+            <p class="input-ok-msg hidden" id="su-id-ok">사용 가능한 이메일입니다.</p>
+          </div>
+
+          <!-- F-3. 비밀번호 / 확인 -->
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="su-pw">비밀번호</label>
+              <input type="password" id="su-pw" class="input" placeholder="8자 이상 입력" autocomplete="new-password"/>
+              <p class="input-error-msg hidden" id="su-pw-msg"></p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="su-pw2">비밀번호 확인</label>
+              <input type="password" id="su-pw2" class="input" placeholder="비밀번호 재입력" autocomplete="new-password"/>
+              <p class="input-error-msg hidden" id="su-pw2-msg"></p>
+            </div>
+          </div>
+
+          <!-- F-4. 이름 -->
+          <div class="form-group">
+            <label class="form-label" for="su-name">이름</label>
+            <input type="text" id="su-name" class="input" placeholder="실명 입력" autocomplete="name"/>
+            <p class="input-error-msg hidden" id="su-name-msg"></p>
+          </div>
+
+          <!-- F-5. 주소 -->
+          <div class="form-group">
+            <label class="form-label" for="su-addr">주소</label>
+            <div class="addr-row">
+              <input type="text" id="su-postcode" class="input" placeholder="우편번호" readonly style="flex:0 0 120px;"/>
+              <button type="button" class="btn sm" id="addr-search-btn">주소 검색</button>
+            </div>
+            <input type="text" id="su-addr" class="input" placeholder="기본 주소" style="margin-top:8px;" readonly/>
+            <input type="text" id="su-addr-detail" class="input" placeholder="상세 주소 입력" style="margin-top:8px;"/>
+          </div>
+
+          <!-- F-6. 전화번호 -->
+          <div class="form-group">
+            <label class="form-label" for="su-tel">전화번호</label>
+            <input type="tel" id="su-tel" class="input" placeholder="010-0000-0000" autocomplete="tel"/>
+            <p class="input-error-msg hidden" id="su-tel-msg"></p>
+          </div>
+
+          <!-- F-7. 이메일 (위의 아이디와 동일) -->
+
+          <!-- F-8. 약관 동의 -->
+          <div class="terms-section">
+            <label class="checkbox-label all-agree">
+              <input type="checkbox" id="agree-all"/>
+              <strong>전체 동의</strong>
+            </label>
+            <div class="terms-list">
+              <label class="checkbox-label">
+                <input type="checkbox" class="term-item" data-required="true"/>
+                <span>[필수] 이용약관 동의</span>
+                <a href="#" class="term-link">보기</a>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" class="term-item" data-required="true"/>
+                <span>[필수] 개인정보 처리방침 동의</span>
+                <a href="#" class="term-link">보기</a>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" class="term-item"/>
+                <span>[선택] 마케팅 정보 수신 동의</span>
+                <a href="#" class="term-link">보기</a>
+              </label>
+            </div>
+            <p class="input-error-msg hidden" id="terms-msg"></p>
+          </div>
+
+          <!-- F-9. 가입 완료 -->
+          <button type="submit" class="btn primary wide lg" style="margin-top:10px;">가입 완료</button>
+
+        </form>
+
+        <div class="auth-footer">
+          <p>이미 회원이신가요?</p>
+          <a href="login.html" class="btn wide" style="margin-top:10px;">로그인</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div id="toast-container"></div>
+  <script src="js/common.js"></script>
+  <script src="js/signup.js"></script>
+</body>
+</html>

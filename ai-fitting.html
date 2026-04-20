@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI 피팅 - SPOFFY</title>
+  <link rel="stylesheet" href="css/common.css"/>
+  <link rel="stylesheet" href="css/ai-fitting.css"/>
+</head>
+<body>
+
+  <header class="top-line">
+    <div class="wrap topbar">
+      <a href="index.html" class="brand"><span class="brand-text">Spoffy</span></a>
+      <div class="header-actions">
+        <a href="mypage.html" class="icon-action" aria-label="마이페이지">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M2 21c0-5.523 4.477-10 10-10s10 4.477 10 10"/></svg>
+        </a>
+        <a href="cart.html" class="icon-action" aria-label="장바구니" style="position:relative;">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge hidden">0</span>
+        </a>
+        <button id="header-login-btn" class="header-text-btn" onclick="window.location.href='login.html'">로그인</button>
+        <button id="header-logout-btn" class="header-text-btn hidden">로그아웃</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap page">
+
+      <!-- J-1. 이용 안내 -->
+      <div class="fit-page-head">
+        <div>
+          <h1 class="fit-title">AI 피팅</h1>
+          <p class="fit-desc">내 사진을 업로드하면 AI가 옷을 입혀드립니다.</p>
+        </div>
+        <!-- J-2. 남은 이용 횟수 -->
+        <div class="fit-count-box panel">
+          <p class="fit-count-label">남은 피팅 횟수</p>
+          <p class="fit-count-val" id="fit-count">5회</p>
+        </div>
+      </div>
+
+      <!-- Info banner -->
+      <div class="fit-info-bar">
+        <span class="fit-info-icon">💡</span>
+        <div>
+          <strong>정면·전신이 잘 보이는 사진</strong>을 업로드하면 더 정확한 결과를 얻을 수 있습니다.
+          배경이 단순할수록 좋으며, 밝은 조명에서 촬영된 사진을 권장합니다.
+        </div>
+      </div>
+
+      <div class="fit-layout">
+
+        <!-- 왼쪽: 업로드 + 옵션 -->
+        <div class="fit-left">
+
+          <!-- J-3/J-4. 사진 업로드 -->
+          <div class="upload-grid">
+            <div class="upload-box panel">
+              <p class="upload-label">정면 사진</p>
+              <div class="upload-preview" id="preview-face">
+                <div class="upload-placeholder">
+                  <span class="upload-icon">🤳</span>
+                  <span>정면 사진 업로드</span>
+                </div>
+              </div>
+              <!-- J-5. 상태 표시 -->
+              <div class="upload-status hidden" id="face-status"></div>
+              <div class="upload-actions">
+                <label class="btn sm upload-file-btn">
+                  파일 선택
+                  <input type="file" accept="image/*" id="face-file" hidden/>
+                </label>
+                <button class="btn sm" id="face-sample-btn">샘플 사용</button>
+              </div>
+            </div>
+
+            <div class="upload-box panel">
+              <p class="upload-label">전신 사진</p>
+              <div class="upload-preview" id="preview-body">
+                <div class="upload-placeholder">
+                  <span class="upload-icon">🧍</span>
+                  <span>전신 사진 업로드</span>
+                </div>
+              </div>
+              <div class="upload-status hidden" id="body-status"></div>
+              <div class="upload-actions">
+                <label class="btn sm upload-file-btn">
+                  파일 선택
+                  <input type="file" accept="image/*" id="body-file" hidden/>
+                </label>
+                <button class="btn sm" id="body-sample-btn">샘플 사용</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- J-6. 현재 상품 + J-7. 색상/사이즈 변경 -->
+          <div class="fit-product panel" id="fit-product">
+            <p class="fit-product-label">피팅 상품</p>
+            <div class="fit-product-inner" id="fit-product-inner">
+              <div class="fit-product-thumb" id="fit-product-thumb"></div>
+              <div class="fit-product-info">
+                <p class="fit-product-name" id="fit-product-name">상품을 선택해주세요</p>
+                <div class="fit-option-row">
+                  <label class="form-label">색상</label>
+                  <select id="fit-color" class="input" style="width:auto;min-width:100px;"></select>
+                </div>
+                <div class="fit-option-row">
+                  <label class="form-label">사이즈</label>
+                  <select id="fit-size" class="input" style="width:auto;min-width:100px;">
+                    <option>XS</option><option>S</option><option selected>M</option>
+                    <option>L</option><option>XL</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <a href="product-list.html" class="btn sm" style="margin-top:12px;">다른 상품 선택</a>
+          </div>
+
+          <!-- J-8. 생성 시작 버튼 -->
+          <button class="btn primary wide lg" id="start-fit-btn" style="margin-top:16px;">
+            AI 피팅 시작
+          </button>
+          <!-- J-10. 재시도 -->
+          <button class="btn wide hidden" id="retry-btn" style="margin-top:10px;">다시 시도</button>
+
+        </div>
+
+        <!-- 오른쪽: 결과 -->
+        <div class="fit-right">
+
+          <!-- J-9. 로딩 -->
+          <div class="fit-loading hidden panel" id="fit-loading">
+            <div class="spinner"></div>
+            <p class="loading-msg">AI가 피팅 이미지를 생성하고 있습니다<br><span id="loading-dots">...</span></p>
+            <p style="font-size:13px;color:var(--muted);margin-top:10px;">약 10~20초 소요됩니다</p>
+          </div>
+
+          <!-- J-11. 결과 이미지 -->
+          <div class="fit-result hidden" id="fit-result">
+            <div class="result-shot" id="result-shot">
+              <!-- JS로 주입 -->
+            </div>
+            <div class="result-actions">
+              <!-- J-12/J-13 -->
+              <button class="btn wide primary lg" id="fit-buy-btn">바로 구매</button>
+              <button class="btn wide lg" id="fit-cart-btn">장바구니 담기</button>
+              <div class="result-icon-row">
+                <button class="icon-btn" id="fit-save-btn">
+                  <span class="icon-symbol">⤓</span><span>저장</span>
+                </button>
+                <button class="icon-btn" id="fit-share-btn">
+                  <span class="icon-symbol">↗</span><span>공유</span>
+                </button>
+                <button class="icon-btn" id="fit-wish-btn">
+                  <span class="icon-symbol">♡</span><span>찜하기</span>
+                </button>
+                <button class="icon-btn" id="fit-retry-icon">
+                  <span class="icon-symbol">↺</span><span>재생성</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 결과 전 기본 상태 -->
+          <div class="fit-placeholder panel" id="fit-placeholder">
+            <div class="fit-ph-icon">👗</div>
+            <p>사진을 업로드하고<br>AI 피팅을 시작해보세요</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <div><div class="footer-brand-text">Spoffy</div></div>
+        <div class="footer-col"><h4>Services</h4><a href="product-list.html">상품 목록</a></div>
+        <div class="footer-col"><h4>고객센터</h4><a href="#">이용약관</a></div>
+      </div>
+      <div class="footer-bottom"><p class="footer-copyright">© 2025 SPOFFY Inc.</p></div>
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+  <script src="js/common.js"></script>
+  <script src="js/ai-fitting.js"></script>
+</body>
+</html>

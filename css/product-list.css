@@ -1,0 +1,161 @@
+/* ========================================
+   SPOFFY - 상품 목록 페이지 (product-list.css)
+   ======================================== */
+
+/* ── Search bar ── */
+.search-bar-wrap {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+.search-bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.search-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 14px;
+  outline: none;
+  background: var(--bg);
+  transition: border-color 0.18s;
+}
+.search-input:focus { border-color: var(--text); background: #fff; }
+.search-submit {
+  padding: 12px 22px;
+  background: var(--text);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.search-close {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+}
+
+/* ── Page head ── */
+.list-page-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.list-page-head h1 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+.product-count {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ── Layout: 사이드바 없이 단일 컬럼 ── */
+.list-layout {
+  display: block;
+}
+
+/* ── Sort bar ── */
+.sort-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.sort-right { flex-shrink: 0; }
+.sort-select {
+  width: auto;
+  min-width: 130px;
+  padding: 9px 36px 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ── Product grid: 사이드바 제거 후 4열 ── */
+.list-content .product-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* ── Rank badge ── */
+.rank-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 9px;
+  background: var(--text);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  z-index: 1;
+}
+.rank-badge::before {
+  content: 'TOP ';
+  font-size: 9px;
+  opacity: 0.65;
+}
+
+/* ── Pagination ── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.page-btn {
+  padding: 10px 20px;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.page-btn:hover:not(:disabled) { background: var(--soft); }
+.page-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.page-numbers { display: flex; gap: 4px; }
+.page-num {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s, color 0.15s;
+}
+.page-num:hover { background: var(--soft); }
+.page-num.active { background: var(--text); color: #fff; border-color: var(--text); }
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .list-content .product-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 760px) {
+  .list-content .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .list-page-head h1 { font-size: 22px; }
+}

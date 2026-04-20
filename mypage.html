@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>마이페이지 - SPOFFY</title>
+  <link rel="stylesheet" href="css/common.css"/>
+  <link rel="stylesheet" href="css/mypage.css"/>
+</head>
+<body>
+
+  <header class="top-line">
+    <div class="wrap topbar">
+      <a href="index.html" class="brand"><span class="brand-text">Spoffy</span></a>
+      <div class="header-actions">
+        <a href="cart.html" class="icon-action" aria-label="장바구니" style="position:relative;">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge hidden">0</span>
+        </a>
+        <button id="header-login-btn" class="header-text-btn" onclick="window.location.href='login.html'">로그인</button>
+        <button id="header-logout-btn" class="header-text-btn hidden">로그아웃</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap page">
+
+      <!-- K-1. 내 정보 -->
+      <div class="mypage-layout">
+
+        <!-- Sidebar -->
+        <aside class="mypage-sidebar">
+          <div class="user-card panel">
+            <div class="user-avatar" id="user-avatar">👤</div>
+            <p class="user-name" id="user-name">—</p>
+            <p class="user-email" id="user-email">—</p>
+            <div class="user-stats">
+              <div class="user-stat">
+                <span class="stat-val" id="stat-orders">0</span>
+                <span class="stat-label">주문</span>
+              </div>
+              <div class="user-stat">
+                <span class="stat-val" id="stat-wish">0</span>
+                <span class="stat-label">찜</span>
+              </div>
+              <div class="user-stat">
+                <span class="stat-val" id="stat-reviews">0</span>
+                <span class="stat-label">리뷰</span>
+              </div>
+            </div>
+          </div>
+
+          <nav class="mypage-nav panel">
+            <button class="mypage-nav-item active" data-tab="orders">주문 내역</button>
+            <button class="mypage-nav-item" data-tab="info">내 정보 수정</button>
+            <a href="cart.html" class="mypage-nav-item">장바구니</a>
+            <a href="wishlist.html" class="mypage-nav-item">찜 목록</a>
+            <button class="mypage-nav-item" data-tab="reviews">내 리뷰</button>
+            <button class="mypage-nav-item" data-tab="address">배송지 관리</button>
+          </nav>
+        </aside>
+
+        <!-- Main content -->
+        <div class="mypage-content">
+
+          <!-- K-2. 주문 내역 -->
+          <section class="mypage-section" id="tab-orders">
+            <h2 class="mypage-section-title">주문 내역</h2>
+            <div id="orders-list">
+              <!-- JS로 렌더링 -->
+            </div>
+          </section>
+
+          <!-- 내 정보 수정 -->
+          <section class="mypage-section hidden" id="tab-info">
+            <h2 class="mypage-section-title">내 정보 수정</h2>
+            <div class="panel" style="padding:24px;">
+              <div class="form-group">
+                <label class="form-label">이름</label>
+                <input type="text" class="input" id="info-name" placeholder="이름"/>
+              </div>
+              <div class="form-group" style="margin-top:14px;">
+                <label class="form-label">이메일</label>
+                <input type="email" class="input" id="info-email" placeholder="이메일" readonly/>
+              </div>
+              <div class="form-group" style="margin-top:14px;">
+                <label class="form-label">전화번호</label>
+                <input type="tel" class="input" id="info-tel" placeholder="010-0000-0000"/>
+              </div>
+              <div class="form-group" style="margin-top:14px;">
+                <label class="form-label">새 비밀번호</label>
+                <input type="password" class="input" id="info-pw" placeholder="변경 시에만 입력"/>
+              </div>
+              <button class="btn primary" style="margin-top:20px;" id="save-info-btn">저장하기</button>
+            </div>
+          </section>
+
+          <!-- 내 리뷰 -->
+          <section class="mypage-section hidden" id="tab-reviews">
+            <h2 class="mypage-section-title">내 리뷰</h2>
+            <div class="empty-state">
+              <div class="empty-icon">✍️</div>
+              <h3>작성한 리뷰가 없습니다</h3>
+              <p>구매한 상품에 리뷰를 남겨보세요.</p>
+              <a href="product-list.html" class="btn primary" style="margin-top:16px;">쇼핑하기</a>
+            </div>
+          </section>
+
+          <!-- 배송지 관리 -->
+          <section class="mypage-section hidden" id="tab-address">
+            <h2 class="mypage-section-title">배송지 관리</h2>
+            <div class="address-list" id="address-list">
+              <div class="address-card panel">
+                <div class="addr-card-head">
+                  <strong>기본 배송지</strong>
+                  <span class="addr-default-badge">기본</span>
+                </div>
+                <p class="addr-name">홍길동 · 010-1234-5678</p>
+                <p class="addr-detail">서울특별시 강남구 테헤란로 152, 상세주소</p>
+                <div class="addr-actions">
+                  <button class="btn sm">수정</button>
+                  <button class="btn sm">삭제</button>
+                </div>
+              </div>
+              <button class="btn wide" style="margin-top:12px;">+ 새 배송지 추가</button>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <div><div class="footer-brand-text">Spoffy</div></div>
+        <div class="footer-col"><h4>Services</h4><a href="product-list.html">상품 목록</a></div>
+        <div class="footer-col"><h4>고객센터</h4><a href="#">이용약관</a></div>
+      </div>
+      <div class="footer-bottom"><p class="footer-copyright">© 2025 SPOFFY Inc.</p></div>
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+  <script src="js/common.js"></script>
+  <script src="js/mypage.js"></script>
+</body>
+</html>

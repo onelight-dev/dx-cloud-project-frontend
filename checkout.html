@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>결제 - SPOFFY</title>
+  <link rel="stylesheet" href="css/common.css"/>
+  <link rel="stylesheet" href="css/checkout.css"/>
+</head>
+<body>
+
+  <header class="top-line">
+    <div class="wrap topbar">
+      <a href="index.html" class="brand"><span class="brand-text">Spoffy</span></a>
+      <div class="header-actions">
+        <a href="cart.html" class="icon-action" aria-label="장바구니" style="position:relative;">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge hidden">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap page">
+      <h1 class="page-title">결제</h1>
+
+      <div class="checkout-layout">
+
+        <!-- 좌: 배송 + 결제 수단 -->
+        <div class="checkout-main">
+
+          <!-- H-1. 배송 정보 -->
+          <section class="checkout-section panel">
+            <div class="section-inner">
+              <h2 class="checkout-section-title">배송 정보</h2>
+
+              <!-- H-2. 저장된 회원 정보 -->
+              <div class="saved-info-bar hidden" id="saved-info-bar">
+                <span>저장된 배송지를 불러올까요?</span>
+                <button class="btn sm" id="load-info-btn">불러오기</button>
+              </div>
+
+              <div class="form-grid" style="margin-top:16px;">
+                <div class="form-group">
+                  <label class="form-label" for="co-name">수령인 이름</label>
+                  <input type="text" id="co-name" class="input" placeholder="이름 입력"/>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="co-tel">전화번호</label>
+                  <input type="tel" id="co-tel" class="input" placeholder="010-0000-0000"/>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-top:14px;">
+                <label class="form-label">주소</label>
+                <div class="addr-row">
+                  <input type="text" id="co-postcode" class="input" placeholder="우편번호" readonly style="flex:0 0 120px;"/>
+                  <button type="button" class="btn sm" id="co-addr-btn">주소 검색</button>
+                </div>
+                <input type="text" id="co-addr" class="input" placeholder="기본 주소" style="margin-top:8px;" readonly/>
+                <input type="text" id="co-addr-detail" class="input" placeholder="상세 주소" style="margin-top:8px;"/>
+              </div>
+
+              <div class="form-group" style="margin-top:14px;">
+                <label class="form-label" for="co-memo">배송 메모</label>
+                <select id="co-memo" class="input">
+                  <option value="">선택해주세요</option>
+                  <option>문 앞에 놓아주세요</option>
+                  <option>경비실에 맡겨주세요</option>
+                  <option>택배함에 넣어주세요</option>
+                  <option>직접 입력</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <!-- H-5. 결제 수단 -->
+          <section class="checkout-section panel" style="margin-top:16px;">
+            <div class="section-inner">
+              <h2 class="checkout-section-title">결제 수단</h2>
+              <div class="pay-methods">
+                <label class="pay-method">
+                  <input type="radio" name="pay" value="card" checked/>
+                  <span class="pay-label">신용카드</span>
+                </label>
+                <label class="pay-method">
+                  <input type="radio" name="pay" value="kakao"/>
+                  <span class="pay-label">카카오페이</span>
+                </label>
+                <label class="pay-method">
+                  <input type="radio" name="pay" value="naver"/>
+                  <span class="pay-label">네이버페이</span>
+                </label>
+                <label class="pay-method">
+                  <input type="radio" name="pay" value="transfer"/>
+                  <span class="pay-label">계좌이체</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <!-- H-6. 결제 동의 -->
+          <section class="checkout-section panel" style="margin-top:16px;">
+            <div class="section-inner">
+              <h2 class="checkout-section-title">결제 동의</h2>
+              <div class="agree-list">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="agree-all-pay"/>
+                  <strong>전체 동의</strong>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="pay-term"/>
+                  <span>[필수] 구매 조건 확인 및 결제 진행 동의</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" class="pay-term"/>
+                  <span>[필수] 개인정보 제3자 제공 동의</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- 우: 주문 요약 -->
+        <aside class="order-summary panel">
+          <h3 class="summary-title">주문 상품</h3>
+
+          <!-- H-3. 주문 상품 목록 -->
+          <div id="order-items">
+            <!-- JS로 렌더링 -->
+          </div>
+
+          <div class="sum-divider"></div>
+
+          <!-- H-4. 총 금액 -->
+          <div class="sum-row"><span>상품 금액</span><span id="co-sum-products">0원</span></div>
+          <div class="sum-row"><span>할인 금액</span><span id="co-sum-discount" class="discount-val">-0원</span></div>
+          <div class="sum-row"><span>배송비</span><span id="co-sum-shipping">0원</span></div>
+          <div class="sum-row total"><span>최종 결제 금액</span><span id="co-sum-total">0원</span></div>
+
+          <!-- H-7. 결제 버튼 -->
+          <button class="btn primary wide lg" id="pay-btn" style="margin-top:20px;">결제하기</button>
+          <a href="cart.html" class="btn wide" style="margin-top:10px;">장바구니로 돌아가기</a>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <div id="toast-container"></div>
+  <script src="js/common.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

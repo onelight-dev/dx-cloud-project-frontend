@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>주문 완료 - SPOFFY</title>
+  <link rel="stylesheet" href="css/common.css"/>
+  <link rel="stylesheet" href="css/order-complete.css"/>
+</head>
+<body>
+
+  <header class="top-line">
+    <div class="wrap topbar">
+      <a href="index.html" class="brand"><span class="brand-text">Spoffy</span></a>
+      <div class="header-actions">
+        <a href="mypage.html" class="icon-action" aria-label="마이페이지">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M2 21c0-5.523 4.477-10 10-10s10 4.477 10 10"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap page">
+      <div class="complete-wrap">
+
+        <!-- I-1. 결제 완료 문구 -->
+        <div class="complete-icon">✓</div>
+        <h1 class="complete-title">주문이 완료되었습니다!</h1>
+        <p class="complete-sub">주문해 주셔서 감사합니다. 빠르게 배송해 드릴게요.</p>
+
+        <!-- I-2. 주문 번호 / I-3. 주문 일시 -->
+        <div class="order-info panel">
+          <div class="order-info-row">
+            <span class="info-label">주문 번호</span>
+            <strong class="order-no" id="order-no">—</strong>
+          </div>
+          <div class="order-info-row">
+            <span class="info-label">주문 일시</span>
+            <span id="order-date">—</span>
+          </div>
+          <div class="order-info-row">
+            <span class="info-label">결제 금액</span>
+            <strong id="order-total">—</strong>
+          </div>
+          <div class="order-info-row">
+            <span class="info-label">예상 배송일</span>
+            <span id="order-eta">—</span>
+          </div>
+        </div>
+
+        <!-- 주문 상품 -->
+        <div class="ordered-items" id="ordered-items"></div>
+
+        <!-- 배송 안내 -->
+        <div class="steps panel">
+          <div class="step">
+            <strong>📦 배송 안내</strong>
+            <p>평균 2~3 영업일 내 CJ대한통운으로 발송됩니다. 발송 후 SMS로 운송장 번호를 안내해 드립니다.</p>
+          </div>
+          <div class="step">
+            <strong>🔄 교환·반품</strong>
+            <p>상품 수령 후 7일 이내 마이페이지에서 신청 가능합니다.</p>
+          </div>
+        </div>
+
+        <!-- I-4. 메인 이동 / I-5. 주문 확인 이동 -->
+        <div class="complete-actions">
+          <a href="index.html" class="btn wide lg">홈으로 이동</a>
+          <a href="mypage.html#orders" class="btn primary wide lg">주문 내역 확인</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div id="toast-container"></div>
+  <script src="js/common.js"></script>
+  <script src="js/order-complete.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+/* ========================================
+   SPOFFY - 회원가입 페이지 (signup.css)
+   ======================================== */
+
+.auth-main {
+  min-height: calc(100vh - var(--header-h));
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px 60px;
+}
+
+.signup-wrap { width: 100%; max-width: 640px; }
+
+.auth-card { padding: 40px 36px; }
+
+.auth-eyebrow {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+}
+.auth-title { font-size: 34px; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 6px; }
+.auth-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
+
+#signup-form { display: grid; gap: 18px; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+/* ID row with duplicate check */
+.id-row { display: flex; gap: 10px; align-items: flex-start; }
+.id-row .input { flex: 1; }
+
+.input-ok-msg { font-size: 12px; color: #2e8b57; margin-top: 4px; }
+
+/* Address row */
+.addr-row { display: flex; gap: 10px; align-items: center; }
+.addr-row .input { flex: 1; }
+
+/* Terms */
+.terms-section {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+.all-agree {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.terms-list { display: grid; gap: 10px; }
+.terms-list .checkbox-label {
+  font-size: 13px;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.terms-list .checkbox-label span { flex: 1; }
+.term-link {
+  font-size: 11px;
+  color: var(--muted);
+  text-decoration: underline;
+  white-space: nowrap;
+  margin-left: 8px;
+}
+
+.auth-footer {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .auth-card { padding: 28px 20px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .auth-title { font-size: 26px; }
+}

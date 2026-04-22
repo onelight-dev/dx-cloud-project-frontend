@@ -5,7 +5,7 @@
 'use strict';
 
 /* ── API 엔드포인트 ── */
-const PRODUCT_API_URL = 'http://192.168.0.69/product/api/products';
+const PRODUCT_API_URL = `${CONFIG.BASE_URL}/product/api/products`;
 
 /* ── 카테고리 매핑 (API category_name → 기존 data-cat 코드) ── */
 const CATEGORY_MAP = {

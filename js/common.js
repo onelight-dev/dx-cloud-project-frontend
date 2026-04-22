@@ -308,8 +308,58 @@ function getFooterHTML() {
   <div id="toast-container"></div>`;
 }
 
+/* ── Layout loader (header.html / footer.html 주입) ── */
+async function loadLayout() {
+  const headerEl = document.getElementById('header');
+  const footerEl = document.getElementById('footer');
+
+  try {
+    if (headerEl) {
+      const res = await fetch('./header.html');
+      headerEl.innerHTML = await res.text();
+    }
+    if (footerEl) {
+      const res = await fetch('./footer.html');
+      footerEl.innerHTML = await res.text();
+    }
+  } catch (err) {
+    console.error('[layout] 레이아웃 로드 실패:', err);
+  }
+
+  initHeader(); // 헤더 DOM 주입 완료 후 실행
+
+  /* ── 검색 토글 버튼 연결 ─────────────────────────────────────────────
+     #search-toggle-btn 은 header.html 안에 있어 DOMContentLoaded 시점에
+     product-list.js의 initSearch()가 실행될 때 아직 DOM에 없음.
+     loadLayout 완료 후 여기서 직접 연결한다.
+     - product-list 페이지: #search-bar-wrap 존재 → 검색바 토글
+     - 그 외 페이지: #search-bar-wrap 없음 → product-list로 이동
+  ─────────────────────────────────────────────────────────────────── */
+  const searchToggleBtn = document.getElementById('search-toggle-btn');
+  const searchBarWrap   = document.getElementById('search-bar-wrap');
+
+  if (searchToggleBtn) {
+    if (searchBarWrap) {
+      searchToggleBtn.addEventListener('click', () => {
+        searchBarWrap.classList.toggle('hidden');
+        if (!searchBarWrap.classList.contains('hidden')) {
+          document.getElementById('search-input')?.focus();
+        }
+      });
+    } else {
+      searchToggleBtn.addEventListener('click', () => {
+        window.location.href = 'product-list.html';
+      });
+    }
+  }
+}
+
 /* ── DOMContentLoaded bootstrap ── */
 document.addEventListener('DOMContentLoaded', () => {
-  initHeader();
+  if (document.getElementById('header') || document.getElementById('footer')) {
+    loadLayout(); // 공유 layout div 있는 페이지 → 비동기 주입 후 initHeader 호출
+  } else {
+    initHeader(); // inline header 페이지 (login, signup, checkout 등) → 즉시 실행
+  }
   initAccordions();
 });

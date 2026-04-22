@@ -5,7 +5,7 @@
 'use strict';
 
 /* ── API 엔드포인트 ── */
-const PRODUCT_DETAIL_API = 'http://192.168.0.69/product/api/products';
+const PRODUCT_DETAIL_API = `${CONFIG.BASE_URL}/product/api/products`;
 
 /* ── 기본 옵션 구조 (option_groups / skus API 연동 전 임시) ─────────────
    API에서 옵션 데이터가 제공되면 이 상수를 제거하고
